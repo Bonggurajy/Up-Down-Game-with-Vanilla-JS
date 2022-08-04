@@ -13,6 +13,9 @@
 
 //5. guessNum이 gameNum과 동일하다면 console에 결과를 출력
 //<기능추가> 게임 도중 q입력시 또는 prompt창의 취소버튼 클릭 시 게임 중단하기
+const $currentState = document.querySelector('#currentState');
+
+
 let maxNum = prompt('Please Write maxNum')
 let maxNumParsed = parseInt(maxNum);
 if(maxNum !== null) {
@@ -35,9 +38,10 @@ if(maxNum !== null) {
     }
   }
   if(guessNum === 'q') {
-    console.log('Quitted !')
+    $currentState.innerHTML= 'Quitted !'
   }
   else {
-  console.log(`Correct ! the answer is ${gameNum} ! Your attempt number is ${attemptedNum}`);
+    $currentState.innerHTML= `Correct ! the answer is ${gameNum} ! Your attempt number is ${attemptedNum}`;
   }
 }
+

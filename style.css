@@ -1,0 +1,10 @@
+h1 {
+  padding: 12px;
+  border-bottom: 1px solid gray;
+  margin-bottom: 20px;
+}
+
+.current-state {
+  background-color: black;
+  color: white;
+}
