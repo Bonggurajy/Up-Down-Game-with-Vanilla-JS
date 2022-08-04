@@ -12,30 +12,32 @@
 
 
 //5. guessNum이 gameNum과 동일하다면 console에 결과를 출력
-//<기능추가> 게임 도중 q입력시 게임 중단하기
-
-let maxNum = parseInt(prompt('Please Write maxNum'));
-while(!maxNum) {
-  maxNum = parseInt(prompt('Please Write valid Number'));
-}
-const gameNum = Math.floor(Math.random()*maxNum) + 1;
-console.log(gameNum);
-
-let guessNum = prompt('Guess Number !');
-let attemptedNum = 1;
-while(parseInt(guessNum) !== gameNum) {
-  attemptedNum++;
-  if(guessNum === 'q') break;
-  if(parseInt(guessNum) < gameNum) {
-    guessNum = prompt('above !');
-  } 
-  else {
-    guessNum = prompt('below !');
+//<기능추가> 게임 도중 q입력시 또는 prompt창의 취소버튼 클릭 시 게임 중단하기
+let maxNum = prompt('Please Write maxNum')
+let maxNumParsed = parseInt(maxNum);
+if(maxNum !== null) {
+  while(!maxNumParsed) {
+    maxNumParsed = parseInt(prompt('Please Write valid Number'));
   }
-}
-if(guessNum === 'q') {
-  console.log('Quitted !')
-}
-else {
-console.log(`Correct ! the answer is ${gameNum} ! Your attempt number is ${attemptedNum}`);
+
+  const gameNum = Math.floor(Math.random()*maxNumParsed) + 1;
+
+  let guessNum = prompt('Guess Number !');
+  let attemptedNum = 1;
+  while(parseInt(guessNum) !== gameNum) {
+    attemptedNum++;
+    if(guessNum === 'q' || guessNum === null) break;
+    if(parseInt(guessNum) < gameNum) {
+      guessNum = prompt('above !');
+    } 
+    else {
+      guessNum = prompt('below !');
+    }
+  }
+  if(guessNum === 'q') {
+    console.log('Quitted !')
+  }
+  else {
+  console.log(`Correct ! the answer is ${gameNum} ! Your attempt number is ${attemptedNum}`);
+  }
 }
